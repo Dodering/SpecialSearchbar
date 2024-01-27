@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #2c3e50; /* Background color */
+    }
+
+    .search-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    #searchInput {
+      padding: 15px;
+      width: 0;
+      transition: width 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), transform 0.5s ease, background-color 0.5s ease; /* Transition for width, transform, and background-color */
+      border: none;
+      outline: none;
+      font-size: 16px;
+      color: #fff; /* Text color */
+      border-radius: 25px; /* Rounded corners */
+      margin-right: 5px; /* Spacing between search bar and icon */
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Light shadow */
+      transform-origin: right center; /* Set transform origin to the right */
+      background-color: #364d65; /* Slightly lighter background color */
+    }
+
+    .search-icon {
+      font-size: 24px;
+      cursor: pointer;
+      color: #2c3e50; /* Background color for contrast */
+      background-color: #475d7a; /* Slightly lighter background color for the icon */
+      padding: 10px; /* Padding for the icon */
+      border-radius: 50%; /* Circular icon */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for the icon */
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      const searchInput = $('#searchInput');
+
+      searchInput.focus(function() {
+        $(this).css({
+          width: '200px',
+          transform: 'rotate(5deg)', /* Rotate slightly during opening */
+          backgroundColor: '#2c3e50', /* Use the same background color during opening */
+        });
+      });
+
+      searchInput.blur(function() {
+        if ($(this).val() === '') {
+          $(this).css({
+            width: '0',
+            transform: 'rotate(0)', /* Reset rotation on blur */
+            backgroundColor: '#364d65', /* Reset background color on blur */
+          });
+        }
+      });
+    });
+  </script>
+  <title>Animated Search Bar</title>
+</head>
+<body>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <div class="search-icon">&#128269;</div>
+  </div>
+</body>
+</html>
